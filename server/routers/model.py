@@ -28,11 +28,9 @@ class CourseDetails(BaseModel):
     equivalents: dict[str, str]
     raw_requirements: str
     exclusions: dict[str, Literal[1]]
-    handbook_note: str
     terms: list[str]
     gen_ed: bool
     is_legacy: bool
-    is_accurate: bool
     is_multiterm: Optional[bool]
 
 

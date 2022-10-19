@@ -5,7 +5,7 @@ Formats raw data, see 'facultyCodesProcessed.json' for output.
 from data.utility.data_helpers import read_data, write_data
 
 FACULTY_CODE_INPUT_PATH = "data/scrapers/facultyCodesRaw.json"
-FACULTY_COURSE_INPUT_PATH = "algorithms/cache/courseMappings.json"
+FACULTY_COURSE_INPUT_PATH = "data/final_data/courseMappings.json"
 OUTPUT_PATH = "data/final_data/facultyCodesProcessed.json"
 
 

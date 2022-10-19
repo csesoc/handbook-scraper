@@ -10,9 +10,13 @@ import subprocess
 from sys import exit
 from typing import Callable
 
+
+from cache.cache import (cache_equivalents, cache_exclusions,
+                                    cache_mappings, cache_program_mappings)
 from data.processors.courses_processing import process_course_data
 from data.processors.programs_processing import process_prg_data
 from data.processors.specialisations_processing import customise_spn_data
+from data.scrapers.faculty_code_formatting import format_code_data
 
 from data.scrapers.courses_formatting import format_course_data
 from data.scrapers.courses_scraper import scrape_course_data
@@ -83,6 +87,20 @@ def run_scrape_enrolment_data():
 
 
 run: dict[str, dict[str, Callable]] = {
+    "cache": {
+        "exclusion": cache_exclusions,
+        "equivalent": cache_equivalents,
+        "mapping": cache_mappings,
+        "program": cache_program_mappings
+    },
+    "faculty": {
+        "format": format_code_data,
+    },
+    "course": {
+        "scrape": scrape_course_data,
+        "format": format_course_data,
+        "process": process_course_data,
+    },
     "program": {
         "scrape": scrape_prg_data,
         "format": format_prg_data,
@@ -92,11 +110,6 @@ run: dict[str, dict[str, Callable]] = {
         "scrape": scrape_spn_data,
         "format": format_spn_data,
         "process": customise_spn_data,
-    },
-    "course": {
-        "scrape": scrape_course_data,
-        "format": format_course_data,
-        "process": process_course_data,
     },
 }
 

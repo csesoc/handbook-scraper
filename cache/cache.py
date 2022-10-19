@@ -9,7 +9,7 @@ import operator
 import re
 from typing import Any
 
-from algorithms.cache.cache_config import (CACHE_CONFIG, CACHED_EQUIVALENTS_FILE,
+from cache.cache_config import (CACHE_CONFIG, CACHED_EQUIVALENTS_FILE,
                                            CACHED_EXCLUSIONS_FILE,
                                            CACHED_WARNINGS_FILE,
                                            CONDITIONS_PROCESSED_FILE,
@@ -61,27 +61,6 @@ def cache_exclusions():
         cached_exclusions[course] = data["exclusions"] | data["equivalents"]
 
     write_data(cached_exclusions, CACHED_EXCLUSIONS_FILE)
-
-
-def cache_handbook_note():
-    """
-    Reads from processed conditions and stores the warnings in a map mapping
-    COURSE: WARNING
-
-    NOTE: Condition warnings are created during the manual fix stage, so this
-    will need to be re-run as more conditions are manually fixed.
-    """
-
-    conditions = read_data(CONDITIONS_PROCESSED_FILE)
-
-    cached_handbook_note = {}
-
-    for course, data in conditions.items():
-        if "handbook_note" in data:
-            cached_handbook_note[course] = data["handbook_note"]
-
-    write_data(cached_handbook_note, CACHED_WARNINGS_FILE)
-
 
 def cache_mappings():
     """

@@ -7,25 +7,25 @@ Is the configuration file for `cache.py`
 # "codes" is a list of valid codes
 # "keyword_mapping" is a dict where the key is a keyword and the value
 # is the codes that keyword maps to
-CACHE_CONFIG = "algorithms/cache/cache_config.json"
+CACHE_CONFIG = "cache/cache_config.json"
 
 # INPUT SOURCES
 COURSES_PROCESSED_FILE = "data/final_data/coursesProcessed.json"
 
 PROGRAMS_FORMATTED_FILE = "data/scrapers/programsFormattedRaw.json"
 
-CACHED_EXCLUSIONS_FILE = "algorithms/cache/exclusions.json"
+CACHED_EXCLUSIONS_FILE = "data/final_data/exclusions.json"
 
-CACHED_EQUIVALENTS_FILE = "algorithms/cache/equivalents.json"
+CACHED_EQUIVALENTS_FILE = "data/final_data/equivalents.json"
 
 CONDITIONS_PROCESSED_FILE = "data/final_data/conditionsProcessed.json"
 
 
 # OUTPUT SOURCES
-CACHED_WARNINGS_FILE = "algorithms/cache/handbook_note.json"
+CACHED_WARNINGS_FILE = "data/final_data/handbook_note.json"
 
-MAPPINGS_FILE = "algorithms/cache/mappings.json"
+MAPPINGS_FILE = "data/final_data/mappings.json"
 
-COURSE_MAPPINGS_FILE = "algorithms/cache/courseMappings.json"
+COURSE_MAPPINGS_FILE = "data/final_data/courseMappings.json"
 
-PROGRAM_MAPPINGS_FILE = "algorithms/cache/programMappings.json"
+PROGRAM_MAPPINGS_FILE = "data/final_data/programMappings.json"

@@ -19,6 +19,7 @@ from data.utility.data_helpers import read_data, write_data
 # Data input/output paths
 INPUT_PATH = "data/scrapers/programsFormattedRaw.json"
 OUTPUT_PATH = "data/final_data/programsProcessed.json"
+FACULTY_CODE_PATH = "data/final_data/facultyCodesProcessed.json"
 
 # Keys for each item in the data
 SPEC_KEY = "spec_data"
@@ -601,6 +602,12 @@ def get_any_requirement_codes(stripped: str, level: str) -> list[str]:
     # There is a faculty/school.
     # Format the faculty properly and get the mappings from faculties -> codes
     faculty = faculty_manual_fixes(search_result.group(1))
+    mappings = read_data(FACULTY_CODE_PATH)
+
+    try:
+        faculty_codes = mappings[faculty]
+    except KeyError:
+        raise ValueError(f"Can't figure out what abbreviated code(s) are for {faculty}")
 
     return list(map(lambda c: f"{c}{level}", faculty_codes))
 
